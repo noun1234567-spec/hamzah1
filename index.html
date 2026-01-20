@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تطبيق الهمزة في بداية الكلمة</title>
-  <!-- يمكن تغيير الخط هنا إلى خط أبسط مثل Tajawal -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -20,7 +19,6 @@
       --error: #c0392b;
     }
 
-    /* الأساسيات العامة */
     body {
       font-family: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: #f8f9fa;
@@ -89,7 +87,6 @@
       border: 1px solid var(--primary-soft);
       padding: 14px;
       border-radius: 14px;
-      position: relative;
       transition: transform 0.3s ease;
       font-size: 0.9rem;
       line-height: 1.25;
@@ -106,9 +103,7 @@
       line-height: 1.2;
     }
 
-    .text-side p {
-      margin: 3px 0;
-    }
+    .text-side p { margin: 3px 0; }
 
     .text-side ul {
       padding-right: 18px;
@@ -117,9 +112,7 @@
       line-height: 1.3;
     }
 
-    .text-side li {
-      margin-bottom: 2px;
-    }
+    .text-side li { margin-bottom: 2px; }
 
     .video-side {
       display: flex;
@@ -145,12 +138,11 @@
       border-radius: 14px;
       border: none;
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      background: #000;
     }
 
     @media (max-width: 480px) {
-      .video-frame {
-        height: 190px;
-      }
+      .video-frame { height: 190px; }
     }
 
     .exercise-header {
@@ -188,7 +180,10 @@
       line-height: 1.25;
     }
 
-    .exercise-box:hover { border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+    .exercise-box:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
 
     .exercise-box h4 {
       margin: 0 0 6px;
@@ -262,30 +257,25 @@
       color: var(--success);
     }
 
-    /* التغذية الراجعة */
     .correct-answer {
       background-color: #e8f8f0 !important;
       border: 1px solid var(--success) !important;
       color: var(--success);
     }
+
     .wrong-answer {
       background-color: #fdf2f2 !important;
       border: 1px solid var(--error) !important;
       color: var(--error);
     }
 
-    /* تحسينات خاصة للجوال الصغير جداً */
     @media (max-width: 400px) {
-      .course-title {
-        font-size: 1.2rem;
-      }
+      .course-title { font-size: 1.2rem; }
       .name-box {
         font-size: 0.8rem;
         padding: 8px 10px;
       }
-      .exercise-box {
-        font-size: 0.85rem;
-      }
+      .exercise-box { font-size: 0.85rem; }
       #checkBtn, #retryBtn {
         width: 100%;
         max-width: 260px;
@@ -326,12 +316,11 @@
         <span>المتحدث: <strong>أ.د. إبراهيم بن سليمان اللاحم</strong></span>
       </div>
 
-      <iframe 
-        class="video-frame" 
-        src="https://drive.google.com/file/d/1D8EWyT6Rjj9svlC3IbBFPbHjgnN5T5bD/preview" 
-        allow="autoplay; fullscreen" 
-        title="شرح قاعدة الهمزة">
-      </iframe>
+      <!-- تشغيل الفيديو من videos/hamza.mp4 داخل نفس المستودع -->
+      <video class="video-frame" controls>
+        <source src="videos/hamza.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
     </div>
   </div>
 
