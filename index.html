@@ -2,205 +2,279 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تطبيق الهمزة في بداية الكلمة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary-color: #933768;
-      --light-bg: #fdf6f9;
-      --text-color: #444;
-      --dark-color: #6d284d;
+      --primary-light: #fdf2f8;
+      --primary-soft: #e2d3dd;
+      --secondary-accent: #f3c1da;
+      --text-main: #2d3436;
+      --text-muted: #636e72;
+      --white: #ffffff;
+      --success: #27ae60;
+      --error: #c0392b;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: var(--light-bg);
+      font-family: 'Cairo', sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 20px;
+      color: var(--text-main);
+      line-height: 1.4;
     }
 
     .course-title {
       text-align: center;
       color: var(--primary-color);
-      font-size: 1.6rem;
-      margin-bottom: 25px;
-      font-weight: bold;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+      width: 100%;
     }
 
     .main-container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(147, 55, 104, 0.1);
+      background: var(--white);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(147, 55, 104, 0.08);
+    }
+
+    .name-box {
+      background: var(--primary-light);
+      border-right: 6px solid var(--primary-color);
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      font-weight: 700;
     }
 
     .top-section {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 30px;
-      align-items: flex-start;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .top-section { grid-template-columns: 1fr; }
     }
 
     .text-side {
-      flex: 1;
-      min-width: 300px;
-      background: #fffafa;
-      border-right: 6px solid var(--primary-color);
-      padding: 20px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--text-color);
+      background: #fff;
+      border: 1px solid var(--primary-soft);
+      padding: 25px;
+      border-radius: 18px;
+      position: relative;
+      transition: transform 0.3s ease;
     }
+
+    .text-side:hover { transform: translateY(-5px); }
 
     .text-side h3 {
-      margin-top: 0;
       color: var(--primary-color);
+      margin-top: 0;
+      font-size: 1.4rem;
+      border-right: 4px solid var(--primary-color);
+      padding-right: 10px;
     }
 
-    .video-side {
-      flex: 1.2;
-      min-width: 300px;
+    .text-side ul {
+      padding-right: 20px;
+      color: var(--text-muted);
     }
 
-    iframe.video-frame {
-      width: 100%;
-      height: 315px;
-      border-radius: 12px;
-      border: 4px solid var(--primary-color);
-    }
+    .video-side { display: flex; flex-direction: column; }
 
     .speaker-box {
-      background: #fffafa;
-      border-left: 5px solid var(--primary-color);
-      padding: 10px 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--primary-light), #fff);
+      border: 1px solid var(--primary-soft);
+      padding: 12px 20px;
+      border-radius: 50px;
+      margin-bottom: 15px;
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .video-frame {
+      width: 100%;
+      height: 300px;
+      border-radius: 18px;
+      border: none;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .exercise-header {
+      text-align: center;
+      color: var(--primary-color);
+      margin: 40px 0 20px;
+      font-size: 1.5rem;
     }
 
     .exercise-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      margin-top: 30px;
     }
 
     .exercise-box {
-      background: #fffafa;
-      border-right: 6px solid var(--primary-color);
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.03);
+      background: #ffffff;
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
     }
 
+    .exercise-box:hover { border-color: var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
     .exercise-box h4 {
-      margin: 0 0 10px 0;
+      margin: 0 0 15px 0;
       color: var(--primary-color);
+      background: var(--primary-light);
+      display: inline-block;
+      padding: 2px 12px;
+      border-radius: 8px;
     }
 
     .exercise-box label {
-      display: block;
-      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
       cursor: pointer;
-      padding: 5px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
       transition: 0.2s;
     }
 
-    .exercise-box label:hover {
-      background: #f0e6eb;
-      border-radius: 5px;
+    .exercise-box label:hover { background: var(--primary-light); }
+
+    input[type="radio"] { accent-color: var(--primary-color); width: 18px; height: 18px; }
+
+    .footer-controls {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
     }
 
-    /* زر التصحيح بثلاث حالات */
-    #checkBtn {
+    #checkBtn, #retryBtn {
       padding: 12px 40px;
       border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      margin-top: 25px;
-      transition: 0.3s;
-      display: inline-block;
-      font-weight: bold;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.4s;
+      font-family: 'Cairo';
     }
 
-    .state0 { background-color: #bfa5b5; color: white; cursor: not-allowed; opacity: 0.6; }
-    .state1 { background-color: #c97aa5; color: white; cursor: not-allowed; opacity: 0.8; }
-    .state2 { background-color: #933768 !important; color: white; cursor: pointer; opacity: 1; }
+    .state0 { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; }
+    .state1 { background: var(--secondary-accent); color: var(--primary-color); cursor: pointer; }
+    .state2 { background: var(--primary-color); color: white; box-shadow: 0 5px 15px rgba(147, 55, 104, 0.3); cursor: pointer; }
+    .state2:hover { transform: scale(1.05); }
 
     #timer {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #933768;
-      margin-top: 20px;
-      font-weight: bold;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     #resultBox {
-      margin-right: 20px;
-      font-weight: bold;
-      color: #2e7d32;
+      margin-top: 10px;
       font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--success);
     }
+
+    /* التغذية الراجعة */
+    .correct-answer { background-color: #e8f8f0 !important; border: 1px solid var(--success) !important; color: var(--success); }
+    .wrong-answer { background-color: #fdf2f2 !important; border: 1px solid var(--error) !important; color: var(--error); }
   </style>
 </head>
 
 <body>
 
-<div class="course-title">التحرير العربي (103 عرب) للعام الجامعي 1447هـ</div>
+<div class="course-title">التحرير العربي (103 عرب) جامعة القصيم ط4</div>
 
 <div class="main-container">
+
+  <div class="name-box">
+    📖 المحاضرة الأولى.
+  </div>
+
   <div class="top-section">
     <div class="text-side">
-      <h3>الهمزة في بداية الكلمة</h3>
-      <p>تنقسم إلى: <strong>همزة قطع</strong> و <strong>همزة وصل</strong>.</p>
-      <p><strong>همزة الوصل (ا):</strong> تنطق في بداية الكلام ولا تنطق عند وصله، وتكتب ألفاً مجردة.</p>
-      <p><strong>همزة القطع (أ / إ):</strong> تنطق وتكتب دائماً، فوق الألف إذا كانت مفتوحة أو مضمومة، وتحتها إذا كانت مكسورة.</p>
-      <p><strong>مواضع همزة الوصل:</strong>
-        <ul>
-          <li>ال التعريف.</li>
-          <li>الأسماء السبعة (اسم، ابن، ابنة، امرؤ، امرأة، اثنان، اثنتان).</li>
-          <li>أمر الفعل الثلاثي (اكتب، اقرأ).</li>
-          <li>ماضي وأمر ومصدر الخماسي والسداسي.</li>
-        </ul>
-      </p>
+      <h3>الهمزة في بداية الكلمة.</h3>
+      <p>تنقسم إلى نوعين أساسيين:</p>
+      <p>🔹 <strong>همزة الوصل (ا):</strong> تنطق في بداية الكلام وتسقط عند وصله، وتكتب ألفاً مجردة من الهمزة.</p>
+      <p>🔹 <strong>همزة القطع (أ / إ):</strong> تنطق وتكتب دائماً، وتظهر فوق الألف (أَ، أُ) أو تحتها (إِ).</p>
+      <hr style="border: 0; border-top: 1px solid var(--primary-soft); margin: 15px 0;">
+      <strong>أهم مواضع همزة الوصل:</strong>
+      <ul>
+        <li>ال التعريف (القلم، الكتاب).</li>
+        <li>الأسماء السبعة (اسم، ابن، امرأة...).</li>
+        <li>أمر الفعل الثلاثي (اقرأ، اكتب).</li>
+        <li>ماضي وأمر ومصدر الفعل الخماسي والسداسي.</li>
+      </ul>
     </div>
 
     <div class="video-side">
       <div class="speaker-box">
-        المتحدث: <strong>أ.د. إبراهيم اللاحم</strong>
+        <span>🎙️</span>
+        <span>المتحدث: <strong>أ.د. إبراهيم بن سليمان اللاحم</strong></span>
       </div>
-<iframe 
-  class="video-frame" 
-  src="https://drive.google.com/file/d/1D8EWyT6Rjj9svlC3IbBFPbHjgnN5T5bD/preview" 
-  allow="autoplay; fullscreen; picture-in-picture" 
-  allowfullscreen 
-  loading="lazy"
-  title="شرح قاعدة الهمزة في بداية الكلمة">
-</iframe>    </div>
+
+      <iframe 
+        class="video-frame" 
+        src="https://drive.google.com/file/d/1D8EWyT6Rjj9svlC3IbBFPbHjgnN5T5bD/preview" 
+        allow="autoplay; fullscreen" 
+        title="شرح قاعدة الهمزة">
+      </iframe>
+    </div>
   </div>
 
-  <hr style="border: 0; border-top: 1px solid #eee;">
+  <div class="exercise-header">📝 تدريب تطبيقي قياسي</div>
+  
+  <div id="timer">⏳ الوقت المتبقي: 20:00</div>
 
-  <h3 style="color:#933768; text-align: center;">تدريب تطبيقي (اختر الإجابة الصحيحة)</h3>
   <div class="exercise-grid" id="exerciseGrid"></div>
 
-  <div id="timer">الوقت المتبقي: 20:00</div>
-
-  <div style="text-align:center; margin-top:20px;">
+  <div class="footer-controls">
     <button id="checkBtn" class="state0" disabled>تصحيح الإجابات</button>
+    <button id="retryBtn" class="state1">إعادة التدريب</button>
     <div id="resultBox"></div>
   </div>
 </div>
 
 <script>
   const questionBank = [
-    {q:"اختر الكتابة الصحيحة:", a:["إسم","اسم","أسم","آسم"], correct:"اسم"},
-    {q:"كلمة تبدأ بهمزة وصل:", a:["اكتب","أحمد","امرأة","أكل"], correct:"اكتب"},
-    {q:"ضع الهمزة الصحيحة في كلمة ( ___لى )", a:["إلى","الى","ألى","آلى"], correct:"إلى"},
+    {q:"اختر الكتابة الصحيحة لكلمة (اسم):", a:["إسم","اسم","أسم","آسم"], correct:"اسم"},
+    {q:"أي الكلمات التالية تبدأ بهمزة وصل؟", a:["أَعلم","أحمد","امرأة","أكل"], correct:"امرأة"},
+    {q:"ضع الهمزة الصحيحة في كلمة ( ___لى ):", a:["إلى","الى","ألى","آلى"], correct:"إلى"},
     {q:"أمر الفعل الثلاثي (كتب) هو:", a:["إكتب","اكتب","أكتب","أكْتب"], correct:"اكتب"},
     {q:"كلمة (ابن) نوع الهمزة فيها:", a:["همزة قطع","همزة وصل","همزة متطرفة","مد"], correct:"همزة وصل"},
     {q:"اختر الكلمة الصحيحة إملائياً:", a:["إمرأة","امرأة","أمرأة","آمرأة"], correct:"امرأة"},
@@ -212,49 +286,63 @@
 
   function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
 
-  const selected = shuffle(questionBank).slice(0, 6);
   const grid = document.getElementById("exerciseGrid");
   const checkBtn = document.getElementById("checkBtn");
+  const retryBtn = document.getElementById("retryBtn");
+  const resultBox = document.getElementById("resultBox");
+  const timerDisplay = document.getElementById("timer");
+
+  let selected = [];
   let timerStarted = false;
   let timeLeft = 20 * 60;
+  let timerInterval = null;
+  let allowChange = true;
 
-  selected.forEach((item, index) => {
-    const box = document.createElement("div");
-    box.className = "exercise-box";
-    let options = item.a.map(opt => `
-      <label>
-        <input type="radio" name="q${index}" value="${opt}" onchange="checkProgress()"> ${opt}
-      </label>
-    `).join("");
-    
-    box.innerHTML = `<h4>سؤال ${index+1}</h4><p>${item.q}</p>${options}`;
-    grid.appendChild(box);
-  });
+  function renderQuestions() {
+    grid.innerHTML = "";
+    selected = shuffle(questionBank).slice(0, 6);
+
+    selected.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "exercise-box";
+      let options = item.a.map(opt => `
+        <label>
+          <input type="radio" name="q${index}" value="${opt}" onchange="checkProgress()"> ${opt}
+        </label>
+      `).join("");
+      
+      box.innerHTML = `<h4>سؤال ${index+1}</h4><p style="font-weight:600">${item.q}</p>${options}`;
+      grid.appendChild(box);
+    });
+  }
 
   function startTimer() {
-    const timerDisplay = document.getElementById("timer");
-    const interval = setInterval(() => {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
       timeLeft--;
       let m = Math.floor(timeLeft / 60);
       let s = timeLeft % 60;
-      timerDisplay.innerText = `الوقت المتبقي: ${m}:${s < 10 ? '0' + s : s}`;
+      timerDisplay.innerHTML = `⏱️ الوقت المتبقي: ${m}:${s < 10 ? '0' + s : s}`;
       if (timeLeft <= 0) {
-        clearInterval(interval);
+        clearInterval(timerInterval);
         alert("انتهى الوقت!");
         checkBtn.disabled = true;
+        checkBtn.className = "state0";
       }
     }, 1000);
   }
 
   window.checkProgress = function() {
+    if (!allowChange) return;
+
     if (!timerStarted) {
       timerStarted = true;
       startTimer();
     }
-    
     const answeredCount = document.querySelectorAll('input[type="radio"]:checked').length;
     if (answeredCount > 0 && answeredCount < 6) {
       checkBtn.className = "state1";
+      checkBtn.disabled = false;
     } else if (answeredCount === 6) {
       checkBtn.className = "state2";
       checkBtn.disabled = false;
@@ -263,16 +351,56 @@
 
   checkBtn.addEventListener("click", () => {
     let score = 0;
-    selected.forEach((item, index) => {
-      const selectedOpt = document.querySelector(`input[name="q${index}"]:checked`);
-      if (selectedOpt && selectedOpt.value === item.correct) {
-        score += 1.5;
-      }
+    document.querySelectorAll('.exercise-box label').forEach(lbl => {
+      lbl.classList.remove('correct-answer', 'wrong-answer');
     });
-    document.getElementById("resultBox").innerHTML = `درجتك هي: ${score} من 9`;
+
+    selected.forEach((item, index) => {
+      const options = document.querySelectorAll(`input[name="q${index}"]`);
+      options.forEach(optEl => {
+        const label = optEl.parentElement;
+        if (optEl.value === item.correct) {
+          label.classList.add('correct-answer');
+        }
+        if (optEl.checked && optEl.value !== item.correct) {
+          label.classList.add('wrong-answer');
+        }
+        if (optEl.checked && optEl.value === item.correct) {
+          score += 1.5;
+        }
+      });
+    });
+
+    resultBox.innerHTML = `النتيجة النهائية: ${score} من 9`;
     checkBtn.disabled = true;
     checkBtn.style.opacity = "0.5";
+    checkBtn.innerText = "تم التصحيح";
+
+    allowChange = false; // منع تعديل الاختيارات بعد التصحيح
   });
+
+  retryBtn.addEventListener("click", () => {
+    // إيقاف المؤقّت وإعادة الزمن
+    if (timerInterval) clearInterval(timerInterval);
+    timeLeft = 20 * 60;
+    timerStarted = false;
+    timerDisplay.innerHTML = "⏳ الوقت المتبقي: 20:00";
+
+    // إعادة الأسئلة
+    renderQuestions();
+
+    // إعادة حالة الأزرار والنتيجة
+    resultBox.innerHTML = "";
+    checkBtn.disabled = true;
+    checkBtn.className = "state0";
+    checkBtn.style.opacity = "1";
+    checkBtn.innerText = "تصحيح الإجابات";
+
+    allowChange = true;
+  });
+
+  // أول تحميل
+  renderQuestions();
 </script>
 
 </body>
